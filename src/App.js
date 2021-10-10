@@ -12,6 +12,7 @@ function App() {
   const [error , setError] = useState('');
   const auth = getAuth();
   const [isLogin , setisLogin ] = useState(false);
+  const [name , setName ] = useState()
 
   const googleLoginClick =() =>{
     
@@ -96,11 +97,24 @@ const hendelResetPassword =()=>{
   })
 }
 
+const handeNameChange=e=>{
+  setName(e.target.value)
+}
+
   return (
     <>
     <div className="container">
     <form onSubmit={handelRegister}>
       <h1 className="text-primary text-center">Please {isLogin ? 'Login' : 'Register'} </h1>
+  { !isLogin &&
+    <div className="mb-3">
+    <label htmlFor="exampleInputEmail1" className="form-label">Name  :</label>
+    <input onBlur={handeNameChange} type="email" className="form-control" placeholder="Enter Your Name"  />
+    
+  </div>
+  
+  }
+
   <div className="mb-3">
     <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
     <input onBlur={emailhendelar} type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
