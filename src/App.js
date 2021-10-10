@@ -1,5 +1,5 @@
 
-import {getAuth , signInWithPopup, createUserWithEmailAndPassword  , GoogleAuthProvider ,sendEmailVerification ,sendPasswordResetEmail } from "firebase/auth";
+import {getAuth , signInWithPopup, createUserWithEmailAndPassword  , GoogleAuthProvider ,sendEmailVerification ,sendPasswordResetEmail , updateProfile } from "firebase/auth";
 import { useState } from "react";
 import initional from './firebase/firebase.init';
 
@@ -78,10 +78,18 @@ const registerNewUser=(email ,password)=>{
     console.log(user);
     setError("")
     EmailVerification()
+    setUserName()
   })
   .catch(error =>{
     setError(error.massage)
   })
+}
+const setUserName =()=>{
+  updateProfile(auth.currentUser,{displayName:name})
+  .then(result =>{
+    
+  })
+
 }
 
 const EmailVerification =() =>{
